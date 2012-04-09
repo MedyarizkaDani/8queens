@@ -1,6 +1,0 @@
-<project name="nqueens" default="all">
- <target name="all">
-  <javac includeantruntime="off" srcdir="src" destdir="bin" />
-  <java classpath="bin" classname="nqueens.main"/>
- </target>
-</project>
