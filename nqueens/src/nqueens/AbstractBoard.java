@@ -1,7 +1,10 @@
 package nqueens;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
+
 
 
 
@@ -9,20 +12,23 @@ import java.util.Set;
 
 public abstract class AbstractBoard implements Board {
 	private int boardSize;
-	
+	private int boardBlocked;
 	private final BoardSegment[]rows,cols;
 	private Set<Cell> emptyCells;
+	private List<Cell> queensPositions;
 	private Set<BoardChangeListener>changeListeners;
-	private int placedQueens = 0,attempts=0;
-	private int undos=0;
+	private Set<SolverObserver>observers;
 	public AbstractBoard(int boardSize) {
 		super();
+		this.observers=new HashSet<SolverObserver>();
 		this.changeListeners=new HashSet<BoardChangeListener>();
 		this.rows=new BoardSegment[boardSize];
 		this.cols=new BoardSegment[boardSize];
 		this.boardSize = boardSize;
+		this.boardBlocked=0;
+		this.queensPositions = new LinkedList<Cell>();
 		this.emptyCells = new HashSet<Cell>(boardSize*boardSize);
-		final CellChangeListener ccl = new CellChangeAdaptor() {
+		final CellChangeListener ccl = new CellChangeAdapter() {
 			@Override
 			public void changed(Cell cell, boolean isOccupied, int blockLevel) {
 				if(isOccupied || blockLevel>0){
@@ -33,26 +39,29 @@ public abstract class AbstractBoard implements Board {
 			}
 			@Override
 			public void undo(Cell cell) {
-				undos++;
-				placedQueens--;
+				queensPositions.remove(cell);
 				notifyListiners();
+				for(SolverObserver so:observers){so.incrementUndos();}
 			}
 			@Override
 			public void queenPlaced(Cell cell) {
-				placedQueens++;
-				attempts++;
+				queensPositions.add(0,cell);
 				notifyListiners();
+				for(SolverObserver so:observers){so.incrementAttempts();}
 			}
 		};
 		final BlockingListener bl = new BlockingListener() {
 			
 			@Override
 			public void unblocked() {
-				notifyListenersUnblocked();
+				if(--boardBlocked==0){
+					notifyListenersUnblocked();
+				}
 			}
 			
 			@Override
 			public void blocked() {
+				boardBlocked++;
 				notifyListenersBlocked();
 			}
 		};
@@ -63,12 +72,15 @@ public abstract class AbstractBoard implements Board {
 		for(int i=0;i<boardSize;++i){
 			for(int j=0;j<boardSize;++j){
 				final Cell cell = new DefaultCell(this,ccl,i,j);
-				//this.chessBoard[i][j]=cell;
 				this.rows[i].add(cell);
 				this.cols[j].add(cell);
 				this.emptyCells.add(cell);
 			}
 		}
+	}
+	@Override
+	public boolean isBlocked() {
+		return boardBlocked>0;
 	}
 	protected void notifyListenersUnblocked() {
 		for(BoardChangeListener cl:this.changeListeners){cl.unblocked();}
@@ -84,6 +96,10 @@ public abstract class AbstractBoard implements Board {
 		return this.rows[row].getCell(col);
 	}
 	@Override
+	public void addSolverObserver(SolverObserver solverObserver) {
+		this.observers.add(solverObserver);
+	}
+	@Override
 	public int getBoardSize() {
 		return boardSize;
 	}
@@ -93,23 +109,12 @@ public abstract class AbstractBoard implements Board {
 	}
 	@Override
 	public boolean isSolved() {
-		return this.placedQueens==this.boardSize;
+		return this.queensPositions.size()==this.boardSize;
 	}
 	@Override
-	public int getEmptyCells() {
-		return emptyCells.size();
-	}
-	@Override
-	public int getPlacedQueens() {
-		return this.placedQueens;
-	}
-	@Override
-	public int getUndos() {
-		return undos;
-	}
-	@Override
-	public int getAttempts() {
-		return attempts;
+	public Cell[] getEmptyCells() {
+		
+		return emptyCells.toArray(new Cell[emptyCells.size()]);
 	}
 	@Override
 	public void addChangeListener(BoardChangeListener changeListener) {
@@ -121,28 +126,40 @@ public abstract class AbstractBoard implements Board {
 	}
 	
 	@Override
-	public Object get(PuzzleInfo puzzleInfo) {
+	public Object get(BoardAttributes puzzleInfo) {
 		switch(puzzleInfo){
-		case Attempts: 		return getAttempts();
 		case BoardSize: 	return getBoardSize();
-		case EmptyCells: 	return getEmptyCells();
+		case EmptyCells: 	return emptyCells.size();
 		case IsComplete: 	return isComplete();
+		case IsBlocked: 	return isBlocked();
 		case IsSolved: 		return isSolved();
-		case PlacedQueens: 	return getPlacedQueens();
-		case Undos: 		return getUndos();
+		case PlacedQueens: 	return queensPositions.size();
 		default: 			return null;
 		}
 	}
 	@Override
-	public boolean isRowBlocked(int row){return rows[row].isBlocked();}
-	@Override
-	public boolean isColBlocked(int col){return cols[col].isBlocked();}
-	@Override
-	public int getColUnblockedCount(int col) {
-		return this.cols[col].getUnblockedCount();
+	public Cell[] getQueensPositions() {
+		return this.queensPositions.toArray(new Cell[this.queensPositions.size()]);
 	}
 	@Override
-	public int getRowUnblockedCount(int row) {
-		return this.rows[row].getUnblockedCount();
+	public BoardSegment getCol(int col) {
+		return cols[col];
+	}
+	@Override
+	public BoardSegment getRow(int row) {
+		return rows[row];
+	}
+	@Override
+	public final void reset() {
+		this.queensPositions.clear();
+		this.emptyCells.clear();
+		for(BoardSegment row:rows){
+			for(int i=0;i<boardSize;i++){
+				Cell cell = row.getCell(i);
+				cell.reset();
+				emptyCells.add(cell);
+			}
+		}
+		this.boardBlocked=0;
 	}
 }

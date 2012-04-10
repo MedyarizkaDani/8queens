@@ -4,20 +4,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public abstract class AbstractCell implements Cell {
+public abstract class AbstractCell extends AbstractCoordinate implements Cell {
 	private Set<CellChangeListener> cellChangeListeners;
 	private boolean occupied = false;
 	private int iBlockLevel = 0;
 	
 	private Board board;
 	private final CellType cellType;
-	private final int row,col;
 
 	public AbstractCell(Board board,int row,int col) {
-		super();
+		super(row,col);
 		this.board=board;
-		this.row = row;
-		this.col = col;
 		this.cellType = row%2 == col%2 ? CellType.Dark : CellType.Light ;
 		this.cellChangeListeners = new HashSet<CellChangeListener>();
 	}
@@ -90,14 +87,7 @@ public abstract class AbstractCell implements Cell {
 		return iBlockLevel;
 	}
 	
-	@Override
-	public int getRow() {
-		return row;
-	}
-	@Override
-	public int getCol() {
-		return col;
-	}
+
 	@Override
 	public CellType getCellType() {
 		return cellType;
@@ -105,19 +95,21 @@ public abstract class AbstractCell implements Cell {
 	@Override
 	public Cell getNeighbor(Direction direction){
 		switch(direction){
-		case N : return board.getCell(row-1, col  );
-		case S : return board.getCell(row+1, col  );
-		case E : return board.getCell(row  , col+1);
-		case W : return board.getCell(row  , col-1);
-		case NE: return board.getCell(row-1, col+1);
-		case NW: return board.getCell(row-1, col-1);
-		case SE: return board.getCell(row+1, col+1);
-		case SW: return board.getCell(row+1, col-1);
+		case N : return board.getCell(getRow()-1, getCol()  );
+		case S : return board.getCell(getRow()+1, getCol()  );
+		case E : return board.getCell(getRow()  , getCol()+1);
+		case W : return board.getCell(getRow()  , getCol()-1);
+		case NE: return board.getCell(getRow()-1, getCol()+1);
+		case NW: return board.getCell(getRow()-1, getCol()-1);
+		case SE: return board.getCell(getRow()+1, getCol()+1);
+		case SW: return board.getCell(getRow()+1, getCol()-1);
 		default: return null;
 		}
 	}
 	@Override
-	public String toString() {
-		return occupied?"Q":(iBlockLevel>0?"*":"_");
+	public void reset() {
+		occupied=false;
+		iBlockLevel=0;
+		notifyListeners(false);
 	}
 }

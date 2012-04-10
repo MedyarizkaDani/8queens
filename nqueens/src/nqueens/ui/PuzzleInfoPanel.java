@@ -1,65 +1,79 @@
 package nqueens.ui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import nqueens.Board;
-import nqueens.PuzzleInfo;
+import nqueens.solver.Solver;
 
 public class PuzzleInfoPanel extends JPanel {
-
-	private final JTable table;
+	private Board board=null;
+	private Solver solver = null;
+	private JPanel panel;
+	private BoardAttributesViewer bav;
+	private SolverAttributeViewer sav;
+	private SolversPanel solverPanel;
 	public PuzzleInfoPanel() {
 		super(new BorderLayout(2,2));
+		panel = new JPanel(new BorderLayout());
+		this.solverPanel = new SolversPanel();
+		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		
-		table = new JTable(new DefaultTableModel(){
+
+		final JButton b3 = new JButton("Solve");
+		b3.addActionListener(new ActionListener() {
 			@Override
-			public Object getValueAt(int r, int c) {
-				if(r<PuzzleInfo.values().length){
-					if(c==0) return PuzzleInfo.values()[r];
-					else return board.get(PuzzleInfo.values()[r]);
-				}
-				final int rows = board==null?0:PuzzleInfo.values().length+(board.getBoardSize()*2);
-				final int row = r-PuzzleInfo.values().length+1;
-				final int col = row - board.getBoardSize();
-				if(c==0){
-					if(r<rows-board.getBoardSize()){
-						return "Row "+ row;
-					}else{
-						return "Column " + col;
+			public void actionPerformed(ActionEvent arg0) {
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						setBoard(board);
+						solver.solve();
+						updateInfo();
 					}
-				}else{
-					if(r<rows-board.getBoardSize()){
-						return board.getRowUnblockedCount(row-1);//.isRowBlocked(row-1);
-					}else{
-						return board.getColUnblockedCount(col-1);//.isColBlocked(col-1);
-					}
-				}
-			//return null;
-			}
-			@Override
-			public int getRowCount() {
-				final int rows = board==null?0:PuzzleInfo.values().length+(board.getBoardSize()*2);
-				return rows;
-			}
-			@Override
-			public int getColumnCount() {
-				return 2;
+				}).start();
 			}
 		});
-		this.add(table,BorderLayout.NORTH);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		table.getColumnModel().getColumn(0).setPreferredWidth(100);
+		final JButton b4 = new JButton("Reset");
+		b4.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						board.reset();
+						solver.reset();
+						updateInfo();
+					}
+				}).start();
+			}
+		});
+		add(panel,BorderLayout.CENTER);
+		add(solverPanel,BorderLayout.NORTH);
+		solverPanel.add(b3);
+		solverPanel.add(b4);
 	}
 	public void updateInfo() {
-		table.repaint();
-		table.validate();
+		bav.repaint();
+		sav.repaint();
 	}
-	private Board board;
-	public void setBoard(Board board) {
-		this.board = board;
+	
+	public void setBoard(final Board board) {
+		this.board=board;
+		try {
+			solver = solverPanel.getSolver().newInstance();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		bav = new BoardAttributesViewer(board);
+		sav = new SolverAttributeViewer(solver);
+		solver.setBoard(board);
+		panel.add(sav,BorderLayout.NORTH);
+		panel.add(bav,BorderLayout.CENTER);
 	}
 }
