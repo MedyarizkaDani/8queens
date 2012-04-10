@@ -1,11 +1,10 @@
 package nqueens;
 
-public enum PuzzleInfo {
+public enum BoardAttributes {
 	BoardSize,
 	EmptyCells,
 	PlacedQueens,
-	Attempts,
-	Undos,
 	IsSolved,
+	IsBlocked,
 	IsComplete;
 }

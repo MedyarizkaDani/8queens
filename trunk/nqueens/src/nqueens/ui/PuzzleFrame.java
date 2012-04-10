@@ -8,14 +8,15 @@ import javax.swing.JFrame;
 import nqueens.Board;
 import nqueens.BoardChangeListener;
 
-public class Main extends JFrame {
-	public Main() {
+public class PuzzleFrame extends JFrame {
+	public PuzzleFrame() {
 		super("N-Queens puzzle solver");
 		this.setLayout(new BorderLayout());
 		final MessagePanel mp = new MessagePanel();
-		final BoardContainer bc = new BoardContainer(6);
+		final BoardContainer bc = new BoardContainer(29);
 		final PuzzleInfoPanel pip = new PuzzleInfoPanel();
 		final Board board = bc.getBoard();
+		
 		pip.setBoard(board);
 		board.addChangeListener(new BoardChangeListener() {
 			@Override
@@ -28,10 +29,10 @@ public class Main extends JFrame {
 			}
 			@Override
 			public void unblocked() {
-				System.out.println("-");
 				mp.setMessage("");
 			}
 		});
+		
 		this.getContentPane().add(mp,BorderLayout.NORTH);
 		this.getContentPane().add(bc,BorderLayout.CENTER);
 		this.getContentPane().add(pip,BorderLayout.WEST);
@@ -40,7 +41,7 @@ public class Main extends JFrame {
 		this.pack();
 	}
 	public static void main(String[] args) {
-		new Main().setVisible(true);
+		new PuzzleFrame().setVisible(true);
 	}
 
 }

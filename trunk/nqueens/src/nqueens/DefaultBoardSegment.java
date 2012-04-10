@@ -1,11 +1,15 @@
 package nqueens;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
 public class DefaultBoardSegment implements BoardSegment {
 	private Cell[]cells;
+	private List<Cell>emptyCells;
 	private int pointer=0;
 	private boolean blocked;
 	private int unblocked;
@@ -15,6 +19,7 @@ public class DefaultBoardSegment implements BoardSegment {
 		super();
 		this.boardSegmentBlockedListeners=new HashSet<BlockingListener>();
 		cells=new Cell[size];
+		this.emptyCells=new ArrayList<Cell>();
 		unblocked=size;
 	}
 	public DefaultBoardSegment(int size,BlockingListener boardSegmentBlockedListener) {
@@ -24,7 +29,8 @@ public class DefaultBoardSegment implements BoardSegment {
 	@Override
 	public void add(Cell cell) {
 		cells[pointer++]=cell;
-		cell.addCellChangeListener(new CellChangeAdaptor() {
+		emptyCells.add(cell);
+		cell.addCellChangeListener(new CellChangeAdapter() {
 			
 			@Override
 			public void undo(Cell cell) {
@@ -40,6 +46,7 @@ public class DefaultBoardSegment implements BoardSegment {
 				if(isBlocked()){
 					notifyLisitenersBlocked();
 				}
+				emptyCells.remove(cell);
 			}
 			@Override
 			public void unblocked(Cell cell) {
@@ -47,6 +54,7 @@ public class DefaultBoardSegment implements BoardSegment {
 					notifyLisitenersUnblocked();
 				}
 				unblocked++;
+				emptyCells.add(cell);
 			}
 			
 		});
@@ -79,5 +87,21 @@ public class DefaultBoardSegment implements BoardSegment {
 	@Override
 	public int getUnblockedCount() {
 		return unblocked;
+	}
+	@Override
+	public Cell[] getEmptyCells() {
+		return emptyCells.toArray(new Cell[emptyCells.size()]);
+	}
+	@Override
+	public void set(int index, Cell cell) {
+		this.cells[index]=cell;
+	}
+	@Override
+	public void set(Cell[] cells) {
+		this.cells=cells;
+	}
+	@Override
+	public String toString() {
+		return Arrays.toString(cells);
 	}
 }

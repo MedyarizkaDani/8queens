@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 import nqueens.Cell;
-import nqueens.CellChangeAdaptor;
+import nqueens.CellChangeAdapter;
 
 public class CellContainer extends JComponent {
 	
@@ -30,7 +30,7 @@ public class CellContainer extends JComponent {
 	public CellContainer(final Cell cell) {
 		super();
 		this.cell=cell;
-		cell.addCellChangeListener(new CellChangeAdaptor() {
+		cell.addCellChangeListener(new CellChangeAdapter() {
 			@Override
 			public void changed(Cell cell,boolean isOccupied,int blockLevel) {
 				invalidate();
