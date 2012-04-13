@@ -3,6 +3,7 @@ package nqueens.solver;
 public enum SolverType {
 	Naive		(NaiveSolver.class),
 	Recursive	(RecursiveSolver.class),
+	BruteForce	(BruteForceSolver.class),
 	ConstraintFiltering (ConstraintSatisfactionFilterSolver.class),
 	ConstraintLookahead (ConstraintLookaheadSolver.class),
 	ConstraintSimple (ConstraintSimpleSolver.class)
