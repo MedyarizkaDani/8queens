@@ -26,7 +26,7 @@ public class NaiveSolverJProbeTestCase{
 	}	/** test case for [public void nqueens.solver.AbstractSolver.stopTimer()] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testStopTimer() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		/*void*/ obj.stopTimer();
 		String actualv,expectedv;
 		expectedv = ""+obj.getAttempts();
@@ -55,7 +55,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public void nqueens.solver.AbstractSolver.startTimer()] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testStartTimer() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		/*void*/ obj.startTimer();
 		String actualv,expectedv;
 		expectedv = ""+obj.getAttempts();
@@ -84,7 +84,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public int nqueens.solver.AbstractSolver.speed()] **/
 	@Test(timeout=1000)
 	public void testSpeed() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		int expected = obj.delay();
 		int actual = (int)0;
 		assertEquals(expected,actual);
@@ -93,7 +93,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public void nqueens.solver.NaiveSolver.solveBoard()] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testSolveBoard() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		/*void*/ obj.solveBoard();
 		String actualv,expectedv;
 		expectedv = ""+obj.getAttempts();
@@ -122,7 +122,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public final void nqueens.solver.AbstractSolver.solve()] **/
 	@Test(expected=java.lang.reflect.InvocationTargetException.class,timeout=1000)
 	public void testSolve() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		/*void*/ obj.solve();
 		/*
 		 * Exception thrown while generating test case : null
@@ -155,7 +155,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public void nqueens.solver.NaiveSolver.sleep()] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testSleep() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		/*void*/ obj.sleep();
 		String actualv,expectedv;
 		expectedv = ""+obj.getAttempts();
@@ -184,7 +184,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public void nqueens.solver.AbstractSolver.setBoard(nqueens.Board)] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testSetBoard() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		/*void*/ obj.setBoard(new nqueens.Board(){
 			public boolean isBlocked(){
 				return true;
@@ -257,7 +257,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public void nqueens.solver.AbstractSolver.reset()] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testReset() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		/*void*/ obj.reset();
 		String actualv,expectedv;
 		expectedv = ""+obj.getAttempts();
@@ -286,7 +286,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public int nqueens.solver.AbstractSolver.getUndos()] **/
 	@Test(timeout=1000)
 	public void testGetUndos() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		int expected = obj.getUndos();
 		int actual = (int)0;
 		assertEquals(expected,actual);
@@ -295,7 +295,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public long nqueens.solver.AbstractSolver.getTimeElapsed()] **/
 	@Test(timeout=1000)
 	public void testGetTimeElapsed() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		long expected = obj.getTimeElapsed();
 		long actual = 0L;
 		assertEquals(expected,actual);
@@ -304,7 +304,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public int[] nqueens.solver.AbstractSolver.getSolution()] **/
 	@Test(timeout=1000)
 	public void testGetSolution() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		int[] expected = obj.getSolution();
 		assertNotNull(expected);
 
@@ -312,7 +312,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public nqueens.Board nqueens.solver.AbstractSolver.getBoard()] **/
 	@Test(timeout=1000)
 	public void testGetBoard() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		nqueens.Board expected = obj.getBoard();
 		assertNotNull(expected);
 
@@ -320,7 +320,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public int nqueens.solver.AbstractSolver.getAttempts()] **/
 	@Test(timeout=1000)
 	public void testGetAttempts() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		int expected = obj.getAttempts();
 		int actual = (int)0;
 		assertEquals(expected,actual);
@@ -329,7 +329,7 @@ public class NaiveSolverJProbeTestCase{
 	/** test case for [public java.lang.Object nqueens.solver.AbstractSolver.get(nqueens.solver.SolverAttributes)] **/
 	@Test(expected=java.lang.NullPointerException.class,timeout=1000)
 	public void testGet() throws Throwable{
-		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
+		nqueens.solver.NaiveNQueensSolver obj = new nqueens.solver.NaiveNQueensSolver();
 		java.lang.Object expected = obj.get((nqueens.solver.SolverAttributes)null);
 		assertNotNull(expected);
 

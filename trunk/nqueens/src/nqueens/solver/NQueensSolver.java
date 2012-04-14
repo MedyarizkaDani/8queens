@@ -2,7 +2,7 @@ package nqueens.solver;
 
 import nqueens.Board;
 
-public interface Solver {
+public interface NQueensSolver {
 	void solve();
 	void reset();
 	long getTimeElapsed();

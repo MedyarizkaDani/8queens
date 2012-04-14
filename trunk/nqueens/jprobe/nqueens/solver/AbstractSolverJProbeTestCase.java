@@ -26,7 +26,7 @@ public class AbstractSolverJProbeTestCase{
 	}	/** test case for [public void nqueens.solver.AbstractSolver.stopTimer()] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testStopTimer() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -60,7 +60,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public void nqueens.solver.AbstractSolver.startTimer()] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testStartTimer() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -94,7 +94,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public int nqueens.solver.AbstractSolver.speed()] **/
 	@Test(timeout=1000)
 	public void testSpeed() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -108,7 +108,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public final void nqueens.solver.AbstractSolver.solve()] **/
 	@Test(expected=java.lang.reflect.InvocationTargetException.class,timeout=1000)
 	public void testSolve() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -146,7 +146,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public void nqueens.solver.AbstractSolver.setBoard(nqueens.Board)] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testSetBoard() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -224,7 +224,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public void nqueens.solver.AbstractSolver.reset()] **/
 	@Test(expected=Throwable.class,timeout=1000)
 	public void testReset() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -258,7 +258,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public int nqueens.solver.AbstractSolver.getUndos()] **/
 	@Test(timeout=1000)
 	public void testGetUndos() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -272,7 +272,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public long nqueens.solver.AbstractSolver.getTimeElapsed()] **/
 	@Test(timeout=1000)
 	public void testGetTimeElapsed() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -286,7 +286,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public int[] nqueens.solver.AbstractSolver.getSolution()] **/
 	@Test(timeout=1000)
 	public void testGetSolution() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -299,7 +299,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public nqueens.Board nqueens.solver.AbstractSolver.getBoard()] **/
 	@Test(timeout=1000)
 	public void testGetBoard() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -312,7 +312,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public int nqueens.solver.AbstractSolver.getAttempts()] **/
 	@Test(timeout=1000)
 	public void testGetAttempts() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -326,7 +326,7 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [public java.lang.Object nqueens.solver.AbstractSolver.get(nqueens.solver.SolverAttributes)] **/
 	@Test(expected=java.lang.NullPointerException.class,timeout=1000)
 	public void testGet() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -339,16 +339,16 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [static int nqueens.solver.AbstractSolver.access$3(nqueens.solver.AbstractSolver)] **/
 	@Test(timeout=1000)
 	public void testAccess$3() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
 
 	};
 		Object expected = null;
-		java.lang.reflect.Method method = nqueens.solver.AbstractSolver.class.getDeclaredMethod("access$3",new Class<?>[]{nqueens.solver.AbstractSolver.class});
+		java.lang.reflect.Method method = nqueens.solver.AbstractNQueensSolver.class.getDeclaredMethod("access$3",new Class<?>[]{nqueens.solver.AbstractNQueensSolver.class});
 		method.setAccessible(true);
-		expected = method.invoke(obj,new Object[]{new nqueens.solver.AbstractSolver(){
+		expected = method.invoke(obj,new Object[]{new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -361,16 +361,16 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [static int nqueens.solver.AbstractSolver.access$1(nqueens.solver.AbstractSolver)] **/
 	@Test(timeout=1000)
 	public void testAccess$1() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
 
 	};
 		Object expected = null;
-		java.lang.reflect.Method method = nqueens.solver.AbstractSolver.class.getDeclaredMethod("access$1",new Class<?>[]{nqueens.solver.AbstractSolver.class});
+		java.lang.reflect.Method method = nqueens.solver.AbstractNQueensSolver.class.getDeclaredMethod("access$1",new Class<?>[]{nqueens.solver.AbstractNQueensSolver.class});
 		method.setAccessible(true);
-		expected = method.invoke(obj,new Object[]{new nqueens.solver.AbstractSolver(){
+		expected = method.invoke(obj,new Object[]{new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
@@ -383,14 +383,14 @@ public class AbstractSolverJProbeTestCase{
 	/** test case for [static int[] nqueens.solver.AbstractSolver.$SWITCH_TABLE$nqueens$solver$SolverAttributes()] **/
 	@Test(timeout=1000)
 	public void test$SWITCH_TABLE$nqueens$solver$SolverAttributes() throws Throwable{
-		nqueens.solver.AbstractSolver obj = new nqueens.solver.AbstractSolver(){
+		nqueens.solver.AbstractNQueensSolver obj = new nqueens.solver.AbstractNQueensSolver(){
 			public void solveBoard(){
 				return ;
 			}
 
 	};
 		Object expected = null;
-		java.lang.reflect.Method method = nqueens.solver.AbstractSolver.class.getDeclaredMethod("$SWITCH_TABLE$nqueens$solver$SolverAttributes",new Class<?>[]{});
+		java.lang.reflect.Method method = nqueens.solver.AbstractNQueensSolver.class.getDeclaredMethod("$SWITCH_TABLE$nqueens$solver$SolverAttributes",new Class<?>[]{});
 		method.setAccessible(true);
 		expected = method.invoke(obj,new Object[]{});
 		String actual = "[1, 2, 3]";

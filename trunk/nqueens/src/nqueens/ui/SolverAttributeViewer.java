@@ -6,11 +6,11 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
-import nqueens.solver.Solver;
+import nqueens.solver.NQueensSolver;
 import nqueens.solver.SolverAttributes;
 
 public class SolverAttributeViewer extends JPanel{
-	public SolverAttributeViewer(final Solver solver) {
+	public SolverAttributeViewer(final NQueensSolver solver) {
 		super(new BorderLayout());
 		final JTable table = new JTable(new AbstractTableModel() {
 			@Override

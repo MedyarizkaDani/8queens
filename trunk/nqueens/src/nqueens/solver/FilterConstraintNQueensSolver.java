@@ -7,33 +7,25 @@ import jp.ac.kobe_u.cs.cream.NotEquals;
 import jp.ac.kobe_u.cs.cream.Solution;
 import nqueens.Board;
 
-public class ConstraintLookaheadSolver extends AbstractSolver {
+public class FilterConstraintNQueensSolver extends AbstractNQueensSolver {
 
 	@Override
 	protected void solveBoard() {
 		final Board board = getBoard();
 		final int n= board.getBoardSize();
 final Network net = new Network();
-final IntVariable[] q = new IntVariable[n];
+final IntVariable[] q = new IntVariable[n];	// row constraints
+final IntVariable[] u = new IntVariable[n];	// column constraints
+final IntVariable[] d = new IntVariable[n]; // diagonal constraint
 for (int i = 0; i < n; ++i) {
 	q[i] = new IntVariable(net, 0, n-1);
+	u[i] = q[i].add(i);
+	d[i] = q[i].subtract(i);
 }
-for (int i = 0; i < n; ++i) {
-	for(int x=1;x<n;x=x+1){
-		// checking not on same row is not necessary, but another constraint 
-		// can be useful which is, if a queen is placed in row 1, then
-		// do not bother with placing the next queen one step above it, because 
-		// they can attack each other, or one step below it.
-		if(i+x<n){
-			q[i].add(x).notEquals(q[i+x]);
-			q[i].add(-x).notEquals(q[i+x]);
-			q[i+x].add(x).notEquals(q[i]);
-			q[i+x].add(-x).notEquals(q[i]);
-		}
-	}
-}
-new NotEquals(net, q);
-
+new NotEquals(net, q);	// distinct values in rows 
+new NotEquals(net, u);  // distinct values in columns
+new NotEquals(net, d);  // distinct values in diagonals
+		
 		final Solution solution = new DefaultSolver(net).findFirst();
 		for(int r=0;r<q.length;r++){
 			int c = solution.getIntValue(q[r]);

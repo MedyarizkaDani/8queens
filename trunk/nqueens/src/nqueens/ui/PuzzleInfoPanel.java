@@ -9,11 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import nqueens.Board;
-import nqueens.solver.Solver;
+import nqueens.solver.NQueensSolver;
 
 public class PuzzleInfoPanel extends JPanel {
 	private Board board=null;
-	private Solver solver = null;
+	private NQueensSolver solver = null;
 	private JPanel panel;
 	private BoardAttributesViewer bav;
 	private SolverAttributeViewer sav;

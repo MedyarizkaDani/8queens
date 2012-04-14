@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import nqueens.Board;
 
-public class BruteForceSolver extends AbstractSolver {
+public class BruteForceNQueensSolver extends AbstractNQueensSolver {
 
 	@Override
 	protected void solveBoard() {
