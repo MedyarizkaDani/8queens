@@ -13,6 +13,6 @@ public interface Solver {
 	void startTimer();
 	void stopTimer();
 	Object get(SolverAttributes solverAttribute);
-	int speed();
+	int delay();
 	int[] getSolution();
 }

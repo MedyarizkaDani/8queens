@@ -35,7 +35,7 @@ public class ConstraintSatisfactionFilterSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -64,7 +64,7 @@ public class ConstraintSatisfactionFilterSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -85,7 +85,7 @@ public class ConstraintSatisfactionFilterSolverJProbeTestCase{
 	@Test(timeout=1000)
 	public void testSpeed() throws Throwable{
 		nqueens.solver.ConstraintSatisfactionFilterSolver obj = new nqueens.solver.ConstraintSatisfactionFilterSolver();
-		int expected = obj.speed();
+		int expected = obj.delay();
 		int actual = (int)0;
 		assertEquals(expected,actual);
 
@@ -106,7 +106,7 @@ public class ConstraintSatisfactionFilterSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -179,7 +179,7 @@ public class ConstraintSatisfactionFilterSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -208,7 +208,7 @@ public class ConstraintSatisfactionFilterSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
