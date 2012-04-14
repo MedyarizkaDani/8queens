@@ -7,7 +7,7 @@ import jp.ac.kobe_u.cs.cream.NotEquals;
 import jp.ac.kobe_u.cs.cream.Solution;
 import nqueens.Board;
 
-public class ConstraintSimpleSolver extends AbstractSolver {
+public class SimpleConstraintsNQueensSolver extends AbstractNQueensSolver {
 
 	@Override
 	protected void solveBoard() {

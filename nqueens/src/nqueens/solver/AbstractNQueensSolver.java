@@ -4,7 +4,7 @@ import nqueens.Board;
 import nqueens.Coordinate;
 import nqueens.SolverObserver;
 
-public abstract class AbstractSolver implements Solver {
+public abstract class AbstractNQueensSolver implements NQueensSolver {
 	private long time=0L;
 	private int undos,attempts;
 	private Board board;

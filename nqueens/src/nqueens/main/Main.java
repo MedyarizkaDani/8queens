@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 import nqueens.Board;
 import nqueens.DefaultBoard;
-import nqueens.solver.ConstraintLookaheadSolver;
-import nqueens.solver.Solver;
+import nqueens.solver.LookaheadConstraintNQueensSolver;
+import nqueens.solver.NQueensSolver;
 
 public class Main {
 
@@ -14,7 +14,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		Board board = new DefaultBoard(100);
-		Solver solver = new ConstraintLookaheadSolver();
+		NQueensSolver solver = new LookaheadConstraintNQueensSolver();
 		solver.setBoard(board);
 		solver.solve();
 		System.out.println(Arrays.toString(solver.getSolution()));

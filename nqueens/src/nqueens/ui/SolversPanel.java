@@ -9,16 +9,16 @@ import javax.swing.JRadioButton;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import nqueens.solver.Solver;
-import nqueens.solver.SolverType;
+import nqueens.solver.NQueensSolver;
+import nqueens.solver.NQueensSolverType;
 
 public class SolversPanel extends JPanel {
-	private Class<? extends Solver>solver;
+	private Class<? extends NQueensSolver>solver;
 	public SolversPanel() {
 		super(new GridLayout(0,1));
 		setBorder(BorderFactory.createTitledBorder("Select Solver:"));
 		final ButtonGroup optGrp = new ButtonGroup();
-		for(final SolverType st:SolverType.values()){
+		for(final NQueensSolverType st:NQueensSolverType.values()){
 			final JRadioButton rb = new JRadioButton(st.name());
 			rb.addChangeListener(new ChangeListener() {				
 				@Override
@@ -31,7 +31,7 @@ public class SolversPanel extends JPanel {
 		}
 		((JRadioButton)optGrp.getElements().nextElement()).setSelected(true);
 	}
-	public Class<? extends Solver> getSolver() {
+	public Class<? extends NQueensSolver> getSolver() {
 		return solver;
 	}
 }

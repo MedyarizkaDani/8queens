@@ -2,7 +2,7 @@ package nqueens.solver;
 
 import nqueens.Board;
 
-public class RecursiveSolver extends AbstractSolver {
+public class RecursiveNQueensSolver extends AbstractNQueensSolver {
 	   /***********************************************************************
 	    * Return true if queen placement q[n] does not conflict with
 	    * other queens q[0] through q[n-1]
