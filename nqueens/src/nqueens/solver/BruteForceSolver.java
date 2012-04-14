@@ -9,25 +9,25 @@ public class BruteForceSolver extends AbstractSolver {
 	@Override
 	protected void solveBoard() {
 		final Board board = getBoard();
-    	int N = board.getBoardSize();
-    	int[]q = solution(N);
-    	for(int i=0;i<N;i++){
-    		board.getCell(i, q[i]).flipOccupied();
-    	}
+		int N = board.getBoardSize();
+		int[]q = solution(N);
+		for(int i=0;i<N;i++){
+			board.getCell(i, q[i]).flipOccupied();
+		}
 	}
-
+	
 	// increments an array by 1, as if the array is a single number
 	// its digits distributed among array positions
 	static void inc(int[]q){
 		int i=q.length-1;
 		q[i]++;
-
+	
 		while(i>0 && q[i]>=q.length){
 			q[i--]=0;
 			q[i]++;			
 		}
 	}
-
+	
 	static boolean safe(int[] q) {
 		int n = q.length;
 		for (int i = 0; i < n; i++) {

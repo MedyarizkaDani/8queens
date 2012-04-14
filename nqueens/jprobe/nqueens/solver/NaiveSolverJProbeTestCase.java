@@ -35,7 +35,7 @@ public class NaiveSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -64,7 +64,7 @@ public class NaiveSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -85,7 +85,7 @@ public class NaiveSolverJProbeTestCase{
 	@Test(timeout=1000)
 	public void testSpeed() throws Throwable{
 		nqueens.solver.NaiveSolver obj = new nqueens.solver.NaiveSolver();
-		int expected = obj.speed();
+		int expected = obj.delay();
 		int actual = (int)0;
 		assertEquals(expected,actual);
 
@@ -102,7 +102,7 @@ public class NaiveSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -135,7 +135,7 @@ public class NaiveSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -164,7 +164,7 @@ public class NaiveSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -237,7 +237,7 @@ public class NaiveSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();
@@ -266,7 +266,7 @@ public class NaiveSolverJProbeTestCase{
 		expectedv = ""+obj.getUndos();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
-		expectedv = ""+obj.speed();
+		expectedv = ""+obj.delay();
 		actualv = "0";
 		assertEquals(expectedv,actualv);
 		expectedv = ""+obj.getSolution();

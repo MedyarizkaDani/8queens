@@ -47,7 +47,7 @@ public class ConstraintSimpleSolver extends AbstractSolver {
 		final Solution solution = new DefaultSolver(net).findFirst();
 		for(int r=0;r<q.length;r++){
 			int c = solution.getIntValue(q[r])-1;
-			System.out.println(c);
+			//System.out.println(c);
 			board.getCell(r,c).flipOccupied();
 		}
 

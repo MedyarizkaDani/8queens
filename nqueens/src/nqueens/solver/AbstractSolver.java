@@ -5,7 +5,7 @@ import nqueens.Coordinate;
 import nqueens.SolverObserver;
 
 public abstract class AbstractSolver implements Solver {
-	private long time;
+	private long time=0L;
 	private int undos,attempts;
 	private Board board;
 	private int[] solution;
@@ -74,7 +74,7 @@ public abstract class AbstractSolver implements Solver {
 	}
 	protected abstract void solveBoard();
 	@Override
-	public int speed() {
+	public int delay() {
 		return 0;
 	}
 	

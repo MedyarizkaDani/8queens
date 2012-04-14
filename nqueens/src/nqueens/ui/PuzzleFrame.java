@@ -13,7 +13,7 @@ public class PuzzleFrame extends JFrame {
 		super("N-Queens puzzle solver");
 		this.setLayout(new BorderLayout());
 		final MessagePanel mp = new MessagePanel();
-		final BoardContainer bc = new BoardContainer(8);
+		final BoardContainer bc = new BoardContainer(12);
 		final PuzzleInfoPanel pip = new PuzzleInfoPanel();
 		final Board board = bc.getBoard();
 		
